@@ -49,7 +49,10 @@ class Flvjs extends Html5 {
 
     mediaDataSource.type = mediaDataSource.type === undefined ? 'flv' : mediaDataSource.type;
     mediaDataSource.url = src;
-    this.flvPlayer = window.flvjs.createPlayer(mediaDataSource, config);
+    this.flvPlayer = window.flvjs.createPlayer({
+      url: mediaDataSource.url,
+      type: mediaDataSource.type
+    }, config);
     this.flvPlayer.attachMediaElement(this.el_);
     this.flvPlayer.load();
   }
